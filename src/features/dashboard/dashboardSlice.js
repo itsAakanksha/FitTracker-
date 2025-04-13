@@ -3,8 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 // --- Placeholder Data ---
 const initialCoreMetrics = [
   { id: 'steps', title: 'Steps', value: 8436, goal: 10000, color: 'text-blue-500', progressColor: 'bg-gradient-to-r from-blue-400 to-blue-600' },
-  { id: 'calories', title: 'Calories Burned', value: 382, goal: 500, color: 'text-orange-500', progressColor: 'bg-gradient-to-r from-orange-400 to-orange-600' },
-  { id: 'activeMinutes', title: 'Active Minutes', value: 42, goal: 60, color: 'text-green-500', progressColor: 'bg-gradient-to-r from-green-400 to-green-600' },
+  { id: 'calories', title: 'Calories Burned', value: 200, goal: 500, color: 'text-orange-500', progressColor: 'bg-gradient-to-r from-orange-400 to-orange-600' },
+  { id: 'activeMinutes', title: 'Active Minutes', value: 10, goal: 60, color: 'text-green-500', progressColor: 'bg-gradient-to-r from-green-400 to-green-600' },
 ];
 
 const initialWeeklyActivity = [

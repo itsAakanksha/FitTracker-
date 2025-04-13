@@ -18,7 +18,7 @@ function FitnessInsightsSection() {
 
   return (
     // Enhanced card styling
-    <Card className="bg-white dark:bg-gray-800 shadow-lg border border-gray-100 dark:border-gray-700/50">
+    <Card className="bg-white dark:bg-[#17171D] shadow-lg border border-gray-100 dark:border-gray-700/50">
       <CardHeader>
         <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Fitness Insights ✨</CardTitle>
          <p className="text-sm text-gray-500 dark:text-gray-400">Personalized observations based on your activity.</p>

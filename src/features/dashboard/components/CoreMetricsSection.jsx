@@ -34,11 +34,11 @@ function CoreMetricsSection() {
     // Dynamic colors based on progress
     const getProgressColors = (p) => {
       if (p >= 100) return { start: 'rgb(52, 211, 153)', end: 'rgb(16, 185, 129)', shadow: 'rgba(16, 185, 129, 0.3)' }; // Goal Met: emerald
-      if (p >= 80) return { start: 'rgb(249, 115, 22)', end: 'rgb(239, 68, 68)', shadow: 'rgba(239, 68, 68, 0.2)' }; // Near Goal: fire
-      if (p >= 60) return { start: 'rgb(251, 146, 60)', end: 'rgb(249, 115, 22)', shadow: 'rgba(249, 115, 22, 0.2)' }; // Good Progress: orange
-      if (p >= 40) return { start: 'rgb(250, 204, 21)', end: 'rgb(251, 146, 60)', shadow: 'rgba(251, 146, 60, 0.2)' }; // Moderate: yellow-orange
-      if (p >= 20) return { start: 'rgb(74, 222, 128)', end: 'rgb(250, 204, 21)', shadow: 'rgba(250, 204, 21, 0.2)' }; // Getting Started: green-yellow
-      return { start: 'rgb(96, 165, 250)', end: 'rgb(74, 222, 128)', shadow: 'rgba(74, 222, 128, 0.2)' }; // Just Started: blue-green
+      if (p >= 80) return { start: 'rgb(74, 222, 128)', end: 'rgb(52, 211, 153)', shadow: 'rgba(52, 211, 153, 0.2)' }; // Near Goal: green
+      if (p >= 60) return { start: 'rgb(250, 204, 21)', end: 'rgb(74, 222, 128)', shadow: 'rgba(74, 222, 128, 0.2)' }; // Good Progress: yellow-green
+      if (p >= 40) return { start: 'rgb(251, 146, 60)', end: 'rgb(250, 204, 21)', shadow: 'rgba(250, 204, 21, 0.2)' }; // Moderate: orange-yellow
+      if (p >= 20) return { start: 'rgb(239, 68, 68)', end: 'rgb(251, 146, 60)', shadow: 'rgba(251, 146, 60, 0.2)' }; // Getting Started: red-orange
+      return { start: 'rgb(239, 68, 68)', end: 'rgb(239, 68, 68)', shadow: 'rgba(239, 68, 68, 0.2)' }; // Just Started: red
     };
 
     const colors = getProgressColors(progress);
@@ -263,7 +263,7 @@ function CoreMetricsSection() {
             whileHover={!prefersReducedMotion ? { y: -2, scale: 1.005 } : {}} 
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
           >
-            <Card className="bg-white dark:bg-gray-800/90 border border-gray-100 dark:border-gray-700/50 shadow-md hover:shadow-lg overflow-hidden rounded-lg transition-all duration-200">
+            <Card className="bg-white dark:bg-[#17171D]/90 border border-gray-100 dark:border-gray-700/50 shadow-md hover:shadow-lg overflow-hidden rounded-lg transition-all duration-200">
               <CardContent className="p-3 sm:p-4 md:p-5 flex flex-col items-center">
                 <CircularProgress 
                   value={metric.value} 

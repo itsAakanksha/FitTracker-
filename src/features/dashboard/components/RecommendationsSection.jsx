@@ -17,7 +17,7 @@ function RecommendationsSection() {
     };
 
     return (
-        <Card className="bg-white dark:bg-gray-800 shadow-lg h-full">
+        <Card className="bg-white dark:bg-[#17171D] shadow-lg h-full">
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Recommended Workouts</CardTitle>
                 <Button variant="ghost" size="sm" className="text-xs text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-violet-900/30">View All</Button>

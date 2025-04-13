@@ -10,7 +10,7 @@ function PersonalTrainersSection() {
     const trainers = useAppSelector(selectTrainers);
 
     return (
-        <Card className="bg-white dark:bg-gray-800 shadow-lg h-full"> {/* Added h-full */}
+        <Card className="bg-white dark:bg-[#17171D] shadow-lg h-full"> {/* Added h-full */}
             <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">Personal Trainers</CardTitle>
                 {/* Add dropdown/filter if needed */}

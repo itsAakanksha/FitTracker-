@@ -155,7 +155,7 @@ function WeeklyActivitySection() {
       const relativeHeight = maxValue > 0 ? (value / maxValue) * 100 : 0;
 
       return (
-        <div className="p-4 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl text-xs min-w-[140px]">
+        <div className="p-4 bg-white/95 dark:bg-[#101014]/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl text-xs min-w-[140px]">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeProps.fill }} />
             <p className="font-semibold text-gray-700 dark:text-gray-300">{label}</p>
@@ -174,7 +174,7 @@ function WeeklyActivitySection() {
           )}
           
           {/* Mini-comparison bar */}
-          <div className="h-1.5 w-full bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden mt-2">
+          <div className="h-1.5 w-full bg-gray-100 dark:bg-[#17171D] rounded-full overflow-hidden mt-2">
             <motion.div 
               className="h-full rounded-full"
               style={{ 
@@ -340,7 +340,7 @@ function WeeklyActivitySection() {
   }, [activeProps, sparklineGradientId, cleanedData]);
   
   return (
-    <Card className="bg-white dark:bg-gray-800/95 shadow-lg dark:shadow-2xl overflow-hidden backdrop-blur-sm border border-gray-100 dark:border-gray-700/50 rounded-xl">
+    <Card className="bg-white dark:bg-[#17171D]/95 shadow-lg dark:shadow-2xl overflow-hidden backdrop-blur-sm border border-gray-100 dark:border-gray-700/50 rounded-xl">
       <CardHeader>
         <div className="flex justify-between items-start">
           <div>
@@ -361,7 +361,7 @@ function WeeklyActivitySection() {
             <TabsList className="grid w-full grid-cols-3 mb-5 bg-gray-100/70 dark:bg-gray-700/30 rounded-lg p-1.5 backdrop-blur-sm">
               {/* Animated selection indicator */}
               <motion.div
-                className="absolute h-full top-0 bg-white dark:bg-gray-800 rounded-md shadow-md z-0"
+                className="absolute h-full top-0 bg-white dark:bg-[#17171D] rounded-md shadow-md z-0"
                 animate={{ 
                   x: activeTab === 'steps' 
                     ? 0 
@@ -620,7 +620,7 @@ function WeeklyActivitySection() {
                 }`} />
               </div>
               
-              <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white/70 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400">
+              <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white/70 dark:bg-[#17171D]/50 text-gray-500 dark:text-gray-400">
                 7 Day Trend
               </span>
             </div>

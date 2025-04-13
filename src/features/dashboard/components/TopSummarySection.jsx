@@ -125,7 +125,7 @@ function TopSummarySection() {
       <Card 
         className={`relative overflow-hidden p-4 h-[140px] flex flex-col items-center justify-between 
           border border-gray-100 dark:border-gray-800/60 rounded-xl
-          bg-white dark:bg-gray-900
+          bg-white dark:bg-[#101014]
           transition-all duration-300 ease-out
           ${customIndex === 0 ? 'shadow-[0px_3px_12px_rgba(229,62,62,0.06)]' : 
             customIndex === 1 ? 'shadow-[0px_3px_12px_rgba(49,130,206,0.06)]' :
