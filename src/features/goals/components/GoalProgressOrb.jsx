@@ -1,27 +1,18 @@
-import React, { useEffect, useRef } from 'react';
-import { motion, useAnimationControls } from 'framer-motion';
-import { useSpring, animated } from '@react-spring/web';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useAnimationControls, AnimatePresence } from 'framer-motion';
 
 const Particle = ({ delay, duration, size, color }) => {
+  // Convert react-spring particle animation to framer-motion
   const randomPath = () => {
     const x = (Math.random() - 0.5) * 100;
     const y = (Math.random() - 0.5) * 100;
     return { x, y };
   };
 
-  const spring = useSpring({
-    from: { opacity: 0.7, transform: 'translate(0px, 0px) scale(1)', },
-    to: async (next) => {
-      const path = randomPath();
-      await next({ opacity: 0, transform: `translate(${path.x}px, ${path.y}px) scale(0)`, });
-    },
-    config: { duration },
-    delay,
-    loop: true,
-  });
-
+  const path = randomPath();
+  
   return (
-    <animated.div
+    <motion.div
       style={{
         position: 'absolute',
         width: size,
@@ -32,7 +23,14 @@ const Particle = ({ delay, duration, size, color }) => {
         left: '50%',
         marginTop: -size/2,
         marginLeft: -size/2,
-        ...spring
+      }}
+      initial={{ opacity: 0.7, scale: 1, x: 0, y: 0 }}
+      animate={{ opacity: 0, scale: 0, x: path.x, y: path.y }}
+      transition={{ 
+        duration: duration / 1000, // Convert ms to seconds
+        delay: delay / 1000, // Convert ms to seconds
+        repeat: Infinity,
+        repeatDelay: 0.1
       }}
     />
   );
@@ -41,15 +39,9 @@ const Particle = ({ delay, duration, size, color }) => {
 const GoalProgressOrb = ({ progress = 0 }) => {
   const controls = useAnimationControls();
   const progressRef = useRef(progress);
+  const animationRef = useRef(null);
+  const [displayedProgress, setDisplayedProgress] = useState(0);
   
-  // Spring animation for the progress number
-  const { number } = useSpring({
-    from: { number: 0 },
-    number: Math.round(progress),
-    delay: 300,
-    config: { mass: 1, tension: 20, friction: 10 }
-  });
-
   // Generate particles based on progress
   const particles = Array.from({ length: Math.min(30, Math.ceil(progress / 3)) }, (_, i) => ({
     id: i,
@@ -69,6 +61,53 @@ const GoalProgressOrb = ({ progress = 0 }) => {
       progressRef.current = progress;
     }
   }, [progress, controls]);
+
+  // Improved progress animation with proper cleanup
+  useEffect(() => {
+    // Clear any existing animation on re-render
+    if (animationRef.current) {
+      clearInterval(animationRef.current);
+    }
+
+    const animateProgress = () => {
+      const duration = 1.5; // Animation duration in seconds
+      const steps = 60; // Total steps to take during animation
+      const stepTime = (duration * 1000) / steps; // Time per step in ms
+      
+      // Reset to 0 when component first mounts to ensure proper animation
+      if (displayedProgress > progress) {
+        setDisplayedProgress(0);
+      }
+      
+      const increment = (progress - displayedProgress) / steps;
+      let currentStep = 0;
+      
+      animationRef.current = setInterval(() => {
+        currentStep++;
+        if (currentStep >= steps) {
+          setDisplayedProgress(progress);
+          clearInterval(animationRef.current);
+          animationRef.current = null;
+        } else {
+          setDisplayedProgress(prev => {
+            const next = prev + increment;
+            // Prevent overshooting the target value
+            return next > progress ? progress : next;
+          });
+        }
+      }, stepTime);
+    };
+    
+    animateProgress();
+    
+    // Cleanup animation on unmount
+    return () => {
+      if (animationRef.current) {
+        clearInterval(animationRef.current);
+        animationRef.current = null;
+      }
+    };
+  }, [progress, displayedProgress]);
 
   return (
     <div className="relative flex justify-center items-center py-8">
@@ -106,16 +145,18 @@ const GoalProgressOrb = ({ progress = 0 }) => {
             stroke="rgba(255,255,255,0.1)" 
             strokeWidth="2" 
           />
-          <circle 
+          <motion.circle 
             cx="50" 
             cy="50" 
             r="46" 
             fill="none" 
             stroke="url(#orbGradient)" 
             strokeWidth="4"
-            strokeDasharray={`${progress * 2.9}, 1000`}
             strokeLinecap="round"
             transform="rotate(-90, 50, 50)"
+            initial={{ strokeDasharray: "0, 1000" }}
+            animate={{ strokeDasharray: `${progress * 2.9}, 1000` }}
+            transition={{ duration: 1.5, ease: "easeOut" }}
           />
         </svg>
 
@@ -126,9 +167,11 @@ const GoalProgressOrb = ({ progress = 0 }) => {
           
           {/* Progress display */}
           <div className="text-center">
-            <animated.h3 className="text-5xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              {number.to(n => `${Math.floor(n)}`)}
-            </animated.h3>
+            <motion.h3 
+              className="text-5xl font-bold bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent"
+            >
+              {Math.floor(displayedProgress)}
+            </motion.h3>
             <p className="text-gray-500 dark:text-gray-400 text-sm font-medium mt-2">percent</p>
           </div>
         </div>
