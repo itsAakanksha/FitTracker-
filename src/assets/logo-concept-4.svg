@@ -1,0 +1,51 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Floating background shape for depth -->
+  <g filter="url(#backgroundBlur)">
+    <path d="M60 50C53.3726 50 48 55.3726 48 62V138C48 144.627 53.3726 150 60 150H84C90.6274 150 96 144.627 96 138V95H142C148.627 95 154 89.6274 154 83V62C154 55.3726 148.627 50 142 50H60Z" fill="#8B5CF6" fill-opacity="0.4"/>
+  </g>
+  
+  <!-- Main F shape -->
+  <path d="M50 42C50 35.3726 55.3726 30 62 30H138C144.627 30 150 35.3726 150 42V68C150 74.6274 144.627 80 138 80H92V140C92 146.627 86.6274 152 80 152H62C55.3726 152 50 146.627 50 140V42Z" fill="url(#primaryGradient)"/>
+  
+  <!-- Data graph line integrated into F -->
+  <path d="M60 115C60 115 72 95 90 95C108 95 110 115 128 115C146 115 152 95 152 95" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Dynamic progress dots -->
+  <circle cx="60" cy="115" r="4" fill="white"/>
+  <circle cx="90" cy="95" r="4" fill="white"/>
+  <circle cx="128" cy="115" r="4" fill="white"/>
+  <circle cx="152" cy="95" r="4" fill="white"/>
+  
+  <!-- Motion element -->
+  <path d="M92 80V92" stroke="white" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/>
+  <path d="M100 80V92" stroke="white" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/>
+  <path d="M108 80V92" stroke="white" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/>
+  
+  <!-- Abstract growth indicator -->
+  <path d="M50 60H70M50 70H75M50 80H80" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Subtle inner glow -->
+  <path d="M50 42C50 35.3726 55.3726 30 62 30H138C144.627 30 150 35.3726 150 42V68C150 74.6274 144.627 80 138 80H92V140C92 146.627 86.6274 152 80 152H62C55.3726 152 50 146.627 50 140V42Z" fill="url(#innerGlow)" fill-opacity="0.3"/>
+  
+  <defs>
+    <!-- Primary gradient from deep purple to violet -->
+    <linearGradient id="primaryGradient" x1="50" y1="30" x2="150" y2="152" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+    
+    <!-- Inner glow gradient -->
+    <linearGradient id="innerGlow" x1="100" y1="30" x2="100" y2="152" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="white" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    
+    <!-- Background blur effect -->
+    <filter id="backgroundBlur" x="38" y="40" width="126" height="120" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+      <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+    </filter>
+  </defs>
+</svg>

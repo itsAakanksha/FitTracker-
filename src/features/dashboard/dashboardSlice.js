@@ -13,7 +13,7 @@ const initialWeeklyActivity = [
   { name: 'Wed', Steps: 8100, Calories: 380, ActiveMinutes: 40 },
   { name: 'Thu', Steps: 10500, Calories: 480, ActiveMinutes: 60 },
   { name: 'Fri', Steps: 7800, Calories: 350, ActiveMinutes: 38 },
-  { name: 'Sat', Steps̥: 12100, Calories: 550, ActiveMinutes: 75 },
+  { name: 'Sat', Steps: 12100, Calories: 550, ActiveMinutes: 75 },
   { name: 'Sun', Steps: 6900, Calories: 300, ActiveMinutes: 30 },
 ];
 

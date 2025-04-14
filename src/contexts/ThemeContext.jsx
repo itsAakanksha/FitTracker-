@@ -1,5 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { THEME } from '../lib/constants';
+import logoLight from '../assets/logo-concept-4-light.svg';
+import logoDark from '../assets/logo-concept-4.svg';
 
 // Create the theme context
 const ThemeContext = createContext(null);
@@ -52,16 +54,34 @@ export const ThemeProvider = ({ children }) => {
 
   const toggleTheme = () => {
     setTheme(current => {
-      if (current === THEME.LIGHT) return THEME.DARK;
-      if (current === THEME.DARK) return THEME.SYSTEM;
-      return THEME.LIGHT;
+      // Toggle directly between light and dark, ignoring system
+      if (current === THEME.DARK || current === THEME.SYSTEM) {
+        return THEME.LIGHT;
+      } else {
+        return THEME.DARK;
+      }
     });
+  };
+
+  // Get the appropriate logo based on the current theme
+  const getLogo = () => {
+    if (theme === THEME.DARK) {
+      return logoDark; // Dark theme - use original logo
+    } else if (theme === THEME.LIGHT) {
+      return logoLight; // Light theme - use new light logo
+    } else {
+      // System theme - check system preference
+      return window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? logoDark
+        : logoLight;
+    }
   };
 
   const value = {
     theme,
     setTheme,
     toggleTheme,
+    getLogo,
     isDark: 
       theme === THEME.DARK || 
       (theme === THEME.SYSTEM && window.matchMedia('(prefers-color-scheme: dark)').matches)

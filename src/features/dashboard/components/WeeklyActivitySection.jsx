@@ -155,7 +155,7 @@ function WeeklyActivitySection() {
       const relativeHeight = maxValue > 0 ? (value / maxValue) * 100 : 0;
 
       return (
-        <div className="p-4 bg-white/95 dark:bg-[#101014]/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl text-xs min-w-[140px]">
+        <div className="p-4 bg-white/95 dark:bg-[#17171D]/95 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl text-xs min-w-[140px]">
           <div className="flex items-center gap-2 mb-2">
             <div className="w-2 h-2 rounded-full" style={{ backgroundColor: activeProps.fill }} />
             <p className="font-semibold text-gray-700 dark:text-gray-300">{label}</p>
@@ -375,7 +375,7 @@ function WeeklyActivitySection() {
               
               <TabsTrigger 
                 value="steps" 
-                className="relative z-10 flex items-center gap-1.5 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-violet-700 dark:data-[state=active]:text-violet-300"
+                className="relative cursor-pointer z-10 flex items-center gap-1.5 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-violet-700 dark:data-[state=active]:text-violet-300"
               >
                 <Footprints className="w-3.5 h-3.5" />
                 <span>Steps</span>
@@ -383,7 +383,7 @@ function WeeklyActivitySection() {
               
               <TabsTrigger 
                 value="calories" 
-                className="relative z-10 flex items-center gap-1.5 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-orange-700 dark:data-[state=active]:text-orange-300"
+                className="relative cursor-pointer z-10 flex items-center gap-1.5 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-orange-700 dark:data-[state=active]:text-orange-300"
               >
                 <Flame className="w-3.5 h-3.5" />
                 <span>Calories</span>
@@ -391,7 +391,7 @@ function WeeklyActivitySection() {
               
               <TabsTrigger 
                 value="activeMinutes" 
-                className="relative z-10 flex items-center gap-1.5 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-green-700 dark:data-[state=active]:text-green-300"
+                className="relative cursor-pointer z-10 flex items-center gap-1.5 data-[state=active]:shadow-none data-[state=active]:bg-transparent data-[state=active]:text-green-700 dark:data-[state=active]:text-green-300"
               >
                 <Clock className="w-3.5 h-3.5" />
                 <span>Active</span>
